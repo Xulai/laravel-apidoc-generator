@@ -302,13 +302,13 @@ abstract class AbstractGenerator
             case 'min':
                 $attributeData['description'][] = Description::parse($rule)->with($parameters)->getDescription();
                 if (Arr::get($attributeData, 'type') === 'numeric' || Arr::get($attributeData, 'type') === 'integer') {
-                    $attributeData['value'] = $faker->numberBetween($parameters[0]);
+                    $attributeData['value'] = $faker->numberBetween(is_string($parameters[0]) ? $parameters[0] + 0 : $parameters[0]);
                 }
                 break;
             case 'max':
                 $attributeData['description'][] = Description::parse($rule)->with($parameters)->getDescription();
                 if (Arr::get($attributeData, 'type') === 'numeric' || Arr::get($attributeData, 'type') === 'integer') {
-                    $attributeData['value'] = $faker->numberBetween(0, $parameters[0]);
+                    $attributeData['value'] = $faker->numberBetween(0, is_string($parameters[0]) ? $parameters[0] + 0 : $parameters[0]);
                 }
                 break;
             case 'between':
@@ -316,7 +316,7 @@ abstract class AbstractGenerator
                     $attributeData['type'] = 'numeric';
                 }
                 $attributeData['description'][] = Description::parse($rule)->with($parameters)->getDescription();
-                $attributeData['value'] = $faker->numberBetween($parameters[0], $parameters[1]);
+                $attributeData['value'] = $faker->numberBetween(is_string($parameters[0]) ? $parameters[0] + 0 : $parameters[0], is_string($parameters[1]) ? $parameters[1] + 0 : $parameters[1]);
                 break;
             case 'before':
                 $attributeData['type'] = 'date';

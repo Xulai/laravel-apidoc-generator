@@ -131,14 +131,23 @@ class LaravelGenerator extends AbstractGenerator
         ])->merge($server)->toArray();
 
         $request = Request::create(
-            $uri, $method, $parameters,
-            $cookies, $files, $this->transformHeadersToServerVars($server), $content
+            $uri,
+            $method,
+            $parameters,
+            $cookies,
+            $files,
+            $this->transformHeadersToServerVars($server),
+            $content
         );
 
         $kernel = App::make('Illuminate\Contracts\Http\Kernel');
         $response = $kernel->handle($request);
 
         $kernel->terminate($request, $response);
+
+        foreach (\DB::getConnections() as $connection) {
+            $connection->disconnect();
+        }
 
         if (file_exists($file = App::bootstrapPath().'/app.php')) {
             $app = require $file;
