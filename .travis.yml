@@ -1,16 +1,21 @@
 language: php
 
 php:
-  - 5.6
-  - 7.0
-  - 7.1
+  - 7.0.0
+  - 7.1.3
+  - 7.2
+
+env:
+  matrix:
+    - PREFER_LOWEST="--prefer-lowest"
+    - PREFER_LOWEST=""
 
 before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --prefer-dist --no-interaction
+  - travis_retry composer update --no-interaction --prefer-dist $PREFER_LOWEST
 
 script:
-  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - composer test-ci
 
 before_install:
   - pip install --user codecov
