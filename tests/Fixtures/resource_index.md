@@ -21,24 +21,24 @@ Welcome to the generated API reference.
 <!-- END_INFO -->
 
 #general
-<!-- START_2ea88ff35aa222f5582e50f39a2b35fd -->
+<!-- START_fc1e4f6a697e3c48257de845299b71d5 -->
 ## Display a listing of the resource.
 
 > Example request:
 
 ```bash
-curl -X GET "http://localhost/api/user" \
--H "Accept: application/json"
+curl -X GET -G "http://localhost/api/users" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user",
+    "url": "http://localhost/api/users",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -56,31 +56,29 @@ $.ajax(settings).done(function (response) {
 ```
 
 ### HTTP Request
-`GET api/user`
-
-`HEAD api/user`
+`GET api/users`
 
 
-<!-- END_2ea88ff35aa222f5582e50f39a2b35fd -->
+<!-- END_fc1e4f6a697e3c48257de845299b71d5 -->
 
-<!-- START_99a7210df460e7fd8ad2508ee28b9763 -->
+<!-- START_5dac10bb34c7618b018b0230d4a51648 -->
 ## Show the form for creating a new resource.
 
 > Example request:
 
 ```bash
-curl -X GET "http://localhost/api/user/create" \
--H "Accept: application/json"
+curl -X GET -G "http://localhost/api/users/create" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user/create",
+    "url": "http://localhost/api/users/create",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -98,31 +96,29 @@ $.ajax(settings).done(function (response) {
 ```
 
 ### HTTP Request
-`GET api/user/create`
-
-`HEAD api/user/create`
+`GET api/users/create`
 
 
-<!-- END_99a7210df460e7fd8ad2508ee28b9763 -->
+<!-- END_5dac10bb34c7618b018b0230d4a51648 -->
 
-<!-- START_f0654d3f2fc63c11f5723f233cc53c83 -->
+<!-- START_12e37982cc5398c7100e59625ebb5514 -->
 ## Store a newly created resource in storage.
 
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/user" \
--H "Accept: application/json"
+curl -X POST "http://localhost/api/users" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user",
+    "url": "http://localhost/api/users",
     "method": "POST",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -133,29 +129,29 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`POST api/user`
+`POST api/users`
 
 
-<!-- END_f0654d3f2fc63c11f5723f233cc53c83 -->
+<!-- END_12e37982cc5398c7100e59625ebb5514 -->
 
-<!-- START_7a5835399fad9a53bc0430d6e3054297 -->
+<!-- START_8653614346cb0e3d444d164579a0a0a2 -->
 ## Display the specified resource.
 
 > Example request:
 
 ```bash
-curl -X GET "http://localhost/api/user/{user}" \
--H "Accept: application/json"
+curl -X GET -G "http://localhost/api/users/{user}" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user/{user}",
+    "url": "http://localhost/api/users/{user}",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -168,36 +164,34 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "show_resource": "1"
+    "show_resource": true
 }
 ```
 
 ### HTTP Request
-`GET api/user/{user}`
-
-`HEAD api/user/{user}`
+`GET api/users/{user}`
 
 
-<!-- END_7a5835399fad9a53bc0430d6e3054297 -->
+<!-- END_8653614346cb0e3d444d164579a0a0a2 -->
 
-<!-- START_5ed9d10b12650f9536edfa994fafae15 -->
+<!-- START_11ae28146a4d70ba9a0af9b65d290ad5 -->
 ## Show the form for editing the specified resource.
 
 > Example request:
 
 ```bash
-curl -X GET "http://localhost/api/user/{user}/edit" \
--H "Accept: application/json"
+curl -X GET -G "http://localhost/api/users/{user}/edit" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user/{user}/edit",
+    "url": "http://localhost/api/users/{user}/edit",
     "method": "GET",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -210,36 +204,34 @@ $.ajax(settings).done(function (response) {
 
 ```json
 {
-    "edit_resource": "1"
+    "edit_resource": true
 }
 ```
 
 ### HTTP Request
-`GET api/user/{user}/edit`
-
-`HEAD api/user/{user}/edit`
+`GET api/users/{user}/edit`
 
 
-<!-- END_5ed9d10b12650f9536edfa994fafae15 -->
+<!-- END_11ae28146a4d70ba9a0af9b65d290ad5 -->
 
-<!-- START_a4a2abed1e8e8cad5e6a3282812fe3f3 -->
+<!-- START_48a3115be98493a3c866eb0e23347262 -->
 ## Update the specified resource in storage.
 
 > Example request:
 
 ```bash
-curl -X PUT "http://localhost/api/user/{user}" \
--H "Accept: application/json"
+curl -X PUT "http://localhost/api/users/{user}" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user/{user}",
+    "url": "http://localhost/api/users/{user}",
     "method": "PUT",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -250,31 +242,31 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`PUT api/user/{user}`
+`PUT api/users/{user}`
 
-`PATCH api/user/{user}`
+`PATCH api/users/{user}`
 
 
-<!-- END_a4a2abed1e8e8cad5e6a3282812fe3f3 -->
+<!-- END_48a3115be98493a3c866eb0e23347262 -->
 
-<!-- START_4bb7fb4a7501d3cb1ed21acfc3b205a9 -->
+<!-- START_d2db7a9fe3abd141d5adbc367a88e969 -->
 ## Remove the specified resource from storage.
 
 > Example request:
 
 ```bash
-curl -X DELETE "http://localhost/api/user/{user}" \
--H "Accept: application/json"
+curl -X DELETE "http://localhost/api/users/{user}" \
+    -H "Accept: application/json"
 ```
 
 ```javascript
 var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost/api/user/{user}",
+    "url": "http://localhost/api/users/{user}",
     "method": "DELETE",
     "headers": {
-        "accept": "application/json"
+        "Accept": "application/json",
     }
 }
 
@@ -285,8 +277,9 @@ $.ajax(settings).done(function (response) {
 
 
 ### HTTP Request
-`DELETE api/user/{user}`
+`DELETE api/users/{user}`
 
 
-<!-- END_4bb7fb4a7501d3cb1ed21acfc3b205a9 -->
+<!-- END_d2db7a9fe3abd141d5adbc367a88e969 -->
+
 

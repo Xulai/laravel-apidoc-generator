@@ -5,6 +5,9 @@ namespace Mpociot\ApiDoc\Tests\Fixtures;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+/**
+ * @group Group A
+ */
 class TestController extends Controller
 {
     public function dummy()
@@ -17,17 +20,47 @@ class TestController extends Controller
      * This will be the long description.
      * It can also be multiple lines long.
      */
-    public function parseMethodDescription()
+    public function withEndpointDescription()
     {
         return '';
     }
 
-    public function parseFormRequestRules(TestRequest $request)
+    /**
+     * @group Group B
+     */
+    public function withGroupOverride()
     {
         return '';
     }
 
-    public function addRouteBindingsToRequestClass(DynamicRequest $request)
+    /**
+     * @bodyParam user_id int required The id of the user. Example: 9
+     * @bodyParam room_id string The id of the room.
+     * @bodyParam forever boolean Whether to ban the user forever. Example: false
+     * @bodyParam another_one number Just need something here.
+     * @bodyParam yet_another_param object required
+     * @bodyParam even_more_param array
+     */
+    public function withBodyParameters()
+    {
+        return '';
+    }
+
+    /**
+     * @queryParam location_id required The id of the location.
+     * @queryParam user_id required The id of the user. Example: me
+     * @queryParam page required The page number. Example: 4
+     * @queryParam filters  The filters.
+     */
+    public function withQueryParameters()
+    {
+        return '';
+    }
+
+    /**
+     * @authenticated
+     */
+    public function withAuthenticatedTag()
     {
         return '';
     }
@@ -37,30 +70,41 @@ class TestController extends Controller
         return $request->headers->all();
     }
 
-    public function fetchRouteResponse()
+    public function shouldFetchRouteResponse()
     {
-        $fixture = new \stdClass();
-        $fixture->id = 1;
-        $fixture->name = 'banana';
-        $fixture->color = 'red';
-        $fixture->weight = 300;
-        $fixture->delicious = 1;
+        $fruit = new \stdClass();
+        $fruit->id = 4;
+        $fruit->name = ' banana  ';
+        $fruit->color = 'RED';
+        $fruit->weight = 1;
+        $fruit->delicious = true;
 
         return [
-            'id' => (int) $fixture->id,
-            'name' => ucfirst($fixture->name),
-            'color' => ucfirst($fixture->color),
-            'weight' => $fixture->weight.' grams',
-            'delicious' => (bool) $fixture->delicious,
+            'id' => (int) $fruit->id,
+            'name' => trim($fruit->name),
+            'color' => strtolower($fruit->color),
+            'weight' => $fruit->weight.' kg',
+            'delicious' => $fruit->delicious,
         ];
     }
 
-    public function dependencyInjection(DependencyInjection $dependency, TestRequest $request)
+    public function shouldFetchRouteResponseWithEchoedSettings($id)
     {
-        return '';
+        return [
+            '{id}' => $id,
+            'APP_ENV' => getenv('APP_ENV'),
+            'header' => request()->header('header'),
+            'queryParam' => request()->query('queryParam'),
+            'bodyParam' => request()->get('bodyParam'),
+        ];
     }
 
-    public function utf8()
+    /**
+     * @response {
+     *   "result": "Лорем ипсум долор сит амет"
+     * }
+     */
+    public function withUtf8ResponseTag()
     {
         return ['result' => 'Лорем ипсум долор сит амет'];
     }
@@ -74,10 +118,14 @@ class TestController extends Controller
 
     /**
      * @response {
-     *  data: [],
-     *}
+     *   "id": 4,
+     *   "name": "banana",
+     *   "color": "red",
+     *   "weight": "1 kg",
+     *   "delicious": true
+     * }
      */
-    public function responseTag()
+    public function withResponseTag()
     {
         return '';
     }

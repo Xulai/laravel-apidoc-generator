@@ -10,6 +10,10 @@ class TestResourceController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @response {
+     *   "index_resource": true
+     * }
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -21,6 +25,10 @@ class TestResourceController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @response {
+     *   "create_resource": true
+     * }
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,13 +48,14 @@ class TestResourceController extends Controller
      */
     public function store(Request $request)
     {
-        return [
-            'store_resource' => true,
-        ];
     }
 
     /**
      * Display the specified resource.
+     *
+     * @response {
+     *   "show_resource": true
+     * }
      *
      * @param  int  $id
      *
@@ -61,6 +70,10 @@ class TestResourceController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @response {
+     *   "edit_resource": true
+     * }
      *
      * @param  int  $id
      *
@@ -83,9 +96,6 @@ class TestResourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return [
-            'update_resource' => $id,
-        ];
     }
 
     /**
@@ -97,8 +107,5 @@ class TestResourceController extends Controller
      */
     public function destroy($id)
     {
-        return [
-            'destroy_resource' => $id,
-        ];
     }
 }
